@@ -3,6 +3,8 @@
 import React, { useState, useEffect } from 'react';
 import './HighScoresDisplay.css'; // We'll create this CSS file for styling
 
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'http://localhost:5000';
+
 function HighScoresDisplay() {
   // State to store the array of high score objects fetched from the API
   const [highScores, setHighScores] = useState([]);
@@ -19,37 +21,30 @@ function HighScoresDisplay() {
 
     // Fetch high scores from the backend API endpoint
     // This endpoint was created in your Node.js/Express backend (Task 11.4)
-    fetch('http://localhost:5000/api/highscores')
-      .then(response => {
-        // Check if the HTTP response is successful (status code 200-299)
-        if (!response.ok) {
-          // If not okay, construct an error message including the status
-          // and throw it to be caught by the .catch() block
-          throw new Error(`Failed to fetch high scores. Server responded with ${response.status}: ${response.statusText}`);
+    const fetchHighScores = async () => {
+        try {
+            // Use the API_BASE_URL variable
+            const response = await fetch(`${API_BASE_URL}/api/highscores`);
+            if (!response.ok) {
+                // ... (your existing robust error handling) ...
+                let errorMessage = `Failed to fetch high scores. Status: ${response.status}`;
+                try {
+                    const errorData = await response.json();
+                    errorMessage = errorData.message || errorMessage;
+                } catch (e) { /* ignore */ }
+                throw new Error(errorMessage);
+            }
+            const fetchedScores = await response.json();
+            setHighScores(fetchedScores);
+        } catch (err) {
+            console.error("HighScoresDisplay: Error fetching high scores:", err);
+            setError(err.message || 'An unknown error occurred while loading high scores.');
+            setHighScores([]);
+        } finally {
+            setLoading(false);
         }
-        // If the response is okay, parse the response body as JSON
-        // response.json() returns a Promise that resolves with the parsed data
-        return response.json();
-      })
-      .then(fetchedScores => {
-        // This .then() block executes when JSON parsing is successful
-        // 'fetchedScores' will be the array of high score objects from your API
-        // e.g., [{ name: 'Player1', score: 100, date: '...' }, ...]
-        console.log("HighScoresDisplay: High scores fetched successfully:", fetchedScores);
-        setHighScores(fetchedScores); // Update the 'highScores' state
-      })
-      .catch(err => {
-        // This .catch() block executes if any error occurred in the fetch chain
-        // (e.g., network error, server error response, JSON parsing error)
-        console.error("HighScoresDisplay: Error fetching high scores:", err.message);
-        setError(err.message); // Update the 'error' state with the error message
-      })
-      .finally(() => {
-        // The .finally() block executes after the Promise settles (either resolved or rejected)
-        // It's a good place to set loading to false, indicating the fetch attempt is complete
-        setLoading(false);
-        console.log("HighScoresDisplay: Fetch sequence complete. Loading set to false.");
-      });
+    };
+    fetchHighScores();
 
     // The empty dependency array [] ensures this effect runs only once
     // when the component mounts, and not on subsequent re-renders.

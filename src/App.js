@@ -26,13 +26,13 @@ function App() {
       setLoading(true);
       setError(null);
 
-      const baseApiUrl = 'http://localhost:5000/api/questions';
-      const apiUrl = selectedTopic
-        ? `${baseApiUrl}?topic=${encodeURIComponent(selectedTopic)}`
-        : baseApiUrl;
+      const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'http://localhost:5000';
+      // const apiUrl = selectedTopic
+      //   ? `${baseApiUrl}?topic=${encodeURIComponent(selectedTopic)}`
+      //   : baseApiUrl;
 
       try {
-        const response = await fetch(apiUrl);
+        const response = await fetch(`${API_BASE_URL}/api/questions`); 
 
         if (!response.ok) {
           let serverMessage = '';
@@ -133,7 +133,7 @@ function App() {
 
   if (error) {
     return (
-      <div className="app-container">
+      <div className="pp-status-container">
         <h1>Quiz App</h1>
         <p className="error-message">
           <strong>Error:</strong> {error}
@@ -144,9 +144,9 @@ function App() {
     );
   }
 
-  if (quizData.length === 0) {
+  if (!quizData || quizData.length === 0) {
     return (
-      <div className="app-container">
+      <div className="pp-status-container">
         <h1>Quiz App</h1>
         <p className="info-message">
           No quiz questions available for {selectedTopic ? `"${selectedTopic}"` : 'the selected criteria'}.
@@ -157,7 +157,7 @@ function App() {
   }
 
   return (
-    <div className="app-container">
+    <div className="app">
       <h1>Interactive Quiz App</h1>
 
       {!showResults && (

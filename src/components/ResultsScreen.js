@@ -4,7 +4,7 @@ import './ResultsScreen.css'; // Make sure to create or update this CSS file
 import HighScoresDisplay from './HighScoresDisplay'; // 1. Import HighScoresDisplay
 
 const QUALIFICATION_THRESHOLD_PERCENTAGE = 0.3; // e.g., 30% of total questions
-
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'http://localhost:5000';
 
 function ResultsScreen({ score, totalQuestions, onRestartQuiz }) {
   // In a subsequent task, we will add state here to manage the player's name input.
@@ -59,7 +59,7 @@ function ResultsScreen({ score, totalQuestions, onRestartQuiz }) {
     // Asynchronous API call to POST the score data to the backend.
     // This block handles the full lifecycle: request, success, and various error states.
     try {
-      const response = await fetch('http://localhost:3001/api/highscores', {
+        const response = await fetch(`${API_BASE_URL}/api/highscores`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json', // Important for the backend to parse the body correctly
