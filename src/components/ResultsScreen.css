@@ -1,0 +1,263 @@
+/* === Main Container === */
+.results-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+  max-width: 500px;
+  margin: 20px auto;
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.results-main-content {
+  width: 100%;
+  max-width: 500px;
+  text-align: center;
+}
+
+.high-scores-section-on-results {
+  width: 100%;
+  max-width: 600px;
+  margin-top: 20px;
+}
+
+/* === Headings & Scores === */
+.results-screen-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.results-screen-container h2 {
+  font-size: 1.8rem;
+  color: #2c3e50;
+  margin: 0;
+}
+
+.final-score,
+.score-display {
+  font-size: 1.5em;
+  color: #333;
+  margin: 0;
+}
+
+.percentage-display {
+  font-size: 1.1rem;
+  color: #495057;
+  margin: 0;
+}
+
+/* === Score Submission Form === */
+.score-submission-form {
+  margin: 30px 0;
+  padding: 20px;
+  border: 1px dashed #ccc;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  text-align: left;
+}
+
+.score-submission-form h3 {
+  text-align: center;
+  margin: 0 0 15px 0;
+  color: #333;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #555;
+}
+
+.form-group input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 1em;
+}
+
+.form-group input[type="text"]:focus {
+  border-color: #007bff;
+  outline: none;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+/* === Buttons === */
+.action-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 5px;
+  transition: background-color 0.2s ease-in-out, transform 0.1s ease-in-out, box-shadow 0.2s ease;
+}
+
+.action-button:hover {
+  background-color: #0056b3;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.action-button:active {
+  background-color: #004085;
+  transform: translateY(1px);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+}
+
+.action-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5), 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.action-button:disabled {
+  background-color: #cccccc;
+  color: #666666;
+  cursor: not-allowed;
+  opacity: 0.7;
+  box-shadow: none;
+  transform: none;
+}
+
+.submit-score-button {
+  display: block;
+  width: 100%;
+  padding: 10px 15px;
+  font-size: 1.1em;
+}
+
+.restart-button {
+  background-color: #6c757d;
+}
+
+.restart-button:hover {
+  background-color: #545b62;
+}
+
+/* === Messages === */
+.submission-message {
+  text-align: center;
+  padding: 8px;
+  margin: 10px 0;
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+.submission-message.success {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.submission-message.error {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+.qualification-message {
+  text-align: center;
+  padding: 15px;
+  margin: 20px 0;
+  border-radius: 4px;
+  background-color: #fff3cd;
+  color: #856404;
+  border: 1px solid #ffeeba;
+  font-size: 0.95em;
+}
+
+.qualification-message p {
+  margin: 5px 0;
+}
+
+/* === Responsive Design === */
+@media screen and (max-width: 480px) {
+  .results-screen .final-score {
+    font-size: 1.3em;
+  }
+
+  .score-submission-form {
+    padding: 15px;
+  }
+
+  .form-group input[type="text"],
+  .submit-score-button,
+  .restart-button {
+    padding: 10px;
+    font-size: 1em;
+  }
+
+  .score-submission-form h3 {
+    font-size: 1.2em;
+  }
+}
+
+.submission-message {
+  /* ... existing styles (background, color, padding, etc.) ... */
+  opacity: 0; /* Initially hidden */
+  max-height: 0; /* Initially no height, for a slide-down effect */
+  overflow: hidden;
+  transition: opacity 0.3s ease-in-out, max-height 0.3s ease-in-out, margin-top 0.3s ease-in-out, padding-top 0.3s ease-in-out, padding-bottom 0.3s ease-in-out;
+  margin-top: 0; /* Remove initial margin if it's only for when visible */
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+/* Style when the message should be visible */
+/* We need a way to trigger this. React typically adds/removes the element.
+   For CSS transitions on mount/unmount, React Transition Group is better.
+   However, if the element *persists* and only its content/visibility changes via a class,
+   this is easier with pure CSS.
+
+   Let's assume we add/remove a class 'visible' when submissionMessage is set/cleared,
+   or we use React Transition Group.
+
+   If using a class toggle by React (a bit more manual for this case):
+   Add a class like 'visible' to the <p> when submissionMessage is truthy.
+*/
+
+/* If you want to animate the message based on its presence in the DOM (more complex with just CSS for mount/unmount)
+   A simpler approach for an element that *always exists* but toggles content and visibility class: */
+
+
+.submission-message.visible { /* Add this class dynamically in React */
+  opacity: 1;
+  max-height: 100px; /* Or a height large enough to contain the message */
+  margin-top: 10px;  /* Add margin when visible */
+  padding-top: 8px; /* Restore padding */
+  padding-bottom: 8px;
+}
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px); /* Optional slide down */
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.submission-message { /* Assuming this is the class on the <p> tag */
+  /* ... existing styles ... */
+  animation: fadeInDown 0.3s ease-out forwards; /* 'forwards' keeps the state of the last keyframe */
+}

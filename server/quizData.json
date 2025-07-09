@@ -1,0 +1,97 @@
+[
+  {
+    "id": 1,
+    "question": "Which of the following is NOT a JavaScript primitive data type?",
+    "options": ["String", "Number", "Boolean", "Object"],
+    "correctAnswer": "Object",
+    "topic": "Web development"
+  },
+  {
+    "id": 2,
+    "question": "Which of the following is a NoSQL database?",
+    "options": ["MySQL", "MongoDB", "PostgreSQL", "Oracle"],
+    "correctAnswer": "MongoDB",
+    "topic": "Databases"
+  },
+  {
+    "id": 3,
+    "question": "What is the output of: `print(type([]) == list)` in Python?",
+    "options": ["list", "True", "False", "<class 'list'>"],
+    "correctAnswer": "True",
+    "topic": "Python"
+  },
+  {
+    "id": 4,
+    "question": "What is the primary purpose of React?",
+    "options": [
+      "To manage databases",
+      "To create server-side applications",
+      "To build user interfaces",
+      "To style web pages"
+    ],
+    "correctAnswer": "To build user interfaces",
+    "topic": "Web development"
+  },
+  {
+    "id": 5,
+    "question": "What does ACID stand for in database systems?",
+    "options": [
+      "Atomicity, Consistency, Isolation, Durability",
+      "Access, Control, Integrity, Durability",
+      "Atomicity, Concurrency, Isolation, Dependency",
+      "Access, Consistency, Indexing, Durability"
+    ],
+    "correctAnswer": "Atomicity, Consistency, Isolation, Durability",
+    "topic": "Databases"
+  },
+  {
+    "id": 6,
+    "question": "Which scheduling algorithm gives the minimum average waiting time?",
+    "options": [
+      "First-Come First-Serve",
+      "Shortest Job First",
+      "Round Robin",
+      "Priority Scheduling"
+    ],
+    "correctAnswer": "Shortest Job First",
+    "topic": "Operating Systems"
+  },
+  {
+    "id": 7,
+    "question": "What does HTML stand for?",
+    "options": [
+      "Hyper Trainer Marking Language",
+      "Hyper Text Marketing Language",
+      "Hyper Text Markup Language",
+      "Hyperlink and Text Markup Language"
+    ],
+    "correctAnswer": "Hyper Text Markup Language",
+    "topic": "Web development"
+  },
+  {
+    "id": 8,
+    "question": "What is overfitting in machine learning?",
+    "options": [
+      "Model performs well on new data but poorly on training data",
+      "Model performs well on training data but poorly on new data",
+      "Model cannot train at all",
+      "Model is perfectly balanced"
+    ],
+    "correctAnswer": "Model performs well on training data but poorly on new data",
+    "topic": "Machine Learning"
+  },
+  {
+    "id": 9,
+    "question": "What is the time complexity of binary search?",
+    "options": ["O(n)", "O(log n)", "O(n log n)", "O(1)"],
+    "correctAnswer": "O(log n)",
+    "topic": "Data Structures"
+  },
+  {
+    "id": 10,
+    "question": "Which Python library is commonly used for data manipulation and analysis?",
+    "options": ["NumPy", "TensorFlow", "Keras", "Pandas"],
+    "correctAnswer": "Pandas",
+    "topic": "Python"
+  }
+]

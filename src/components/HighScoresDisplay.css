@@ -1,0 +1,124 @@
+/* === High Scores Container === */
+.high-scores-container {
+  width: 80%;
+  max-width: 500px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.high-scores-container h3 {
+  text-align: center;
+  color: #333;
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-size: 1.8em;
+}
+
+/* === High Scores List === */
+.high-scores-list {
+  list-style: none;
+  padding: 0;
+}
+
+.high-score-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 5px;
+  border-bottom: 1px solid #eee;
+  font-size: 1.1em;
+}
+
+.high-score-item:last-child {
+  border-bottom: none;
+}
+
+.high-score-item .rank {
+  font-weight: bold;
+  min-width: 30px;
+  color: #555;
+  padding-right: 5px;
+}
+
+.high-score-item .name {
+  flex-grow: 1;
+  margin: 0 10px;
+  color: #007bff;
+  font-weight: 500;
+}
+
+.high-score-item .score {
+  font-weight: bold;
+  min-width: 80px;
+  text-align: right;
+  color: #28a745;
+}
+
+.high-score-item .date {
+  font-size: 0.8em;
+  color: #777;
+  margin-left: 15px;
+  min-width: 140px;
+  text-align: right;
+}
+
+/* === Messaging === */
+.high-scores-message {
+  text-align: center;
+  padding: 20px;
+  font-size: 1.1em;
+  color: #555;
+}
+
+.high-scores-error {
+  color: #d9534f;
+  font-weight: bold;
+}
+
+/* === Responsive Design === */
+@media screen and (max-width: 600px) {
+  .high-score-item {
+    flex-wrap: wrap;
+    font-size: 0.95em;
+  }
+
+  .high-score-item .name {
+    flex-basis: 60%;
+    margin-left: 5px;
+  }
+
+  .high-score-item .score {
+    flex-basis: 30%;
+    text-align: right;
+  }
+
+  .high-score-item .date {
+    flex-basis: 100%;
+    font-size: 0.75em;
+    min-width: auto;
+    text-align: left;
+    margin-top: 5px;
+    margin-left: 25px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .high-score-item .name,
+  .high-score-item .score {
+    flex-basis: auto;
+  }
+
+  .high-score-item .date {
+    font-size: 0.7em;
+    margin-left: 0;
+    text-align: left;
+  }
+
+  .high-scores-container h3 {
+    font-size: 1.5em;
+  }
+}

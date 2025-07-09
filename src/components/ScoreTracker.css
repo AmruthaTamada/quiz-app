@@ -1,0 +1,46 @@
+/* src/components/ScoreTracker.css */
+
+/* Main container for the score tracker */
+.score-tracker-container {
+  display: flex; /* Use flexbox to arrange items horizontally */
+  justify-content: space-between; /* Distribute space between the score and question progress */
+  align-items: center; /* Align items vertically in the center */
+  
+  padding: 12px 20px; /* Padding inside the container */
+  margin-bottom: 25px; /* Space below the score tracker, before the question */
+  
+  background-color: #f8f9fa; /* A very light grey background, slightly different from the app container */
+  border: 1px solid #e9ecef; /* A subtle border */
+  border-radius: 8px; /* Rounded corners consistent with other elements */
+  
+  font-size: 1rem; /* Base font size for the tracker text */
+  color: #495057; /* A muted text color for good readability */
+}
+
+/* Common styling for individual items within the tracker (score, question progress) */
+.score-display-item,
+.question-progress-item {
+  display: flex; /* Allows label and value to be on the same line if needed, or stacked */
+  align-items: baseline; /* Aligns text based on their baseline, looks good for label: value */
+  gap: 8px; /* Space between the label and its value */
+}
+
+/* Styling for the labels (e.g., "Score:", "Question:") */
+.score-label,
+.question-label {
+  font-weight: 500; /* Slightly bolder labels */
+  color: #6c757d; /* A slightly lighter color for labels to differentiate from values */
+}
+
+/* Styling for the dynamic values (actual score, question X/Y) */
+.score-value,
+.question-value {
+  font-weight: 700; /* Bold font weight for the score and question numbers to make them stand out */
+  color: #343a40; /* Darker color for values for emphasis */
+  font-size: 1.1rem; /* Slightly larger font size for the values */
+}
+
+/* Specific adjustment for the score value if needed */
+.score-value {
+  color: #28a745; 
+} 

@@ -1,38 +1,213 @@
-.App {
+/* === App Container === */
+:root {
+  /* Color Palette */
+  --primary-color: #007bff;
+  --secondary-color: #6c757d;
+  --success-color: #28a745;
+  --error-color: #dc3545;
+  --text-color-dark: #212529;
+  --text-color-light: #f8f9fa;
+  --background-main: #ffffff;
+  --background-card: #f9f9f9;
+  --border-color: #ced4da;
+
+  /* Typography */
+  --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-size-base: 1rem; /* Typically 16px */
+  --font-size-lg: calc(var(--font-size-base) * 1.25);
+  --font-size-sm: calc(var(--font-size-base) * 0.875);
+  --line-height-base: 1.5;
+
+  /* Spacing */
+  --spacing-unit: 8px;
+  --spacing-xs: calc(var(--spacing-unit) * 0.5);  /* 4px */
+  --spacing-sm: var(--spacing-unit);             /* 8px */
+  --spacing-md: calc(var(--spacing-unit) * 2);   /* 16px */
+  --spacing-lg: calc(var(--spacing-unit) * 3);   /* 24px */
+  --spacing-xl: calc(var(--spacing-unit) * 4);   /* 32px */
+
+  /* Borders */
+  --border-radius-base: 0.25rem; /* 4px */
+  --border-radius-lg: 0.5rem;  /* 8px */
+}
+
+.app-container {
+  max-width: 700px;
+  min-width: 300px;
+  margin: 40px auto;
+  padding: 25px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* === Main Title === */
+.app-container h1 {
+  color: #2c3e50;
+  margin: 0 0 25px 0;
+  font-size: 2.2rem;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* === Quiz Interface === */
+.quiz-interface {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: stretch;
+  gap: 20px;
+  width: 100%;
+}
+
+/* === Action Buttons (Reusable) === */
+.action-button {
+  padding: 12px 25px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  font-family: inherit;
+  color: #ffffff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color 0.2s ease-in-out, transform 0.1s ease-in-out, box-shadow 0.2s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.action-button:hover {
+  background-color: #0056b3;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.action-button:active {
+  background-color: #004085;
+  transform: translateY(1px);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+}
+
+.action-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5), 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.action-button:disabled {
+  background-color: #cccccc;
+  color: #666666;
+  cursor: not-allowed;
+  opacity: 0.7;
+  box-shadow: none;
+  transform: none;
+}
+
+.next-question-button {
+  margin-top: 10px;
+}
+
+/* === Message Boxes === */
+.loading-message,
+.error-message,
+.info-message {
+  text-align: center;
+  padding: 20px;
+  font-size: 1.2rem;
+  margin-top: 30px;
+}
+
+.loading-message {
+  color: #555;
+}
+
+.error-message {
+  color: #d9534f;
+  background-color: #f2dede;
+  border: 1px solid #ebccd1;
+  border-radius: 4px;
+}
+
+.info-message {
+  color: #31708f;
+  background-color: #d9edf7;
+  border: 1px solid #bce8f1;
+  border-radius: 4px;
+}
+
+/* === Responsive Design === */
+
+/* Tablets */
+@media screen and (max-width: 768px) {
+  .quiz-container {
+    max-width: 95%;
+    padding: 15px;
+    margin-top: 10px;
+  }
+}
+
+/* Mobile Phones */
+@media screen and (max-width: 480px) {
+  .quiz-container {
+    padding: 10px;
+    margin: 0;
+    border-radius: 0;
+  }
+}
+
+
+.results-screen-transition-enter {
+  opacity: 0;
+  transform: translateY(20px);
+}
+.results-screen-transition-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 300ms, transform 300ms;
+}
+.results-screen-transition-exit {
+  opacity: 1;
+  transform: translateY(0);
+}
+.results-screen-transition-exit-active {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 300ms, transform 300ms;
+}
+/* Add to App.css or your global stylesheet */
+.app-status-container {
+  display: flex;
+  flex-direction: column; /* To stack message and potential spinner */
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  min-height: 100vh; /* Take up full viewport height */
+  text-align: center;
+  padding: 20px;
+  background-color: var(--background-main, #fff); /* Use CSS variable if defined */
 }
 
-.App-link {
-  color: #61dafb;
+.loading-message,
+.error-message, /* From previous task */
+.info-message { /* For "No questions available" */
+  font-size: var(--font-size-lg, 1.25rem); /* Use CSS variable */
+  color: var(--text-color-dark, #333);
+  margin-bottom: 20px; /* Space for a spinner or retry button */
 }
 
-@keyframes App-logo-spin {
-  from {
+/* Optional: Basic Spinner (CSS only) */
+/* You can replace this with an SVG, an image, or a library component */
+.spinner {
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border-left-color: var(--primary-color, #007bff); /* Use CSS variable */
+  animation: spin 1s ease infinite;
+}
+
+@keyframes spin {
+  0% {
     transform: rotate(0deg);
   }
-  to {
+  100% {
     transform: rotate(360deg);
   }
 }

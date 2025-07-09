@@ -1,0 +1,39 @@
+/* Container for the Question Display */
+.question-display-container {
+  margin-bottom: 20px; /* Spacing below the question before options */
+  /* Inherits center alignment from .app-container unless overridden */
+}
+
+/* Main Question Text */
+.question-text {
+  font-size: 1.5rem;      /* Around 24px */
+  font-weight: 600;       /* Semi-bold for emphasis */
+  color: #2c3e50;         /* Soft dark blue-gray */
+  line-height: 1.6;       /* Better line spacing for readability */
+  margin-top: 0;          /* Remove default top margin */
+  /* Optional: add margin-bottom if spacing is too tight */
+}
+
+/* Loading Message Placeholder */
+.loading-question-text {
+  font-size: 1.2rem;
+  color: #777;
+  padding: 20px 0;
+}
+
+/* Responsive Tweaks */
+
+/* Tablets */
+@media screen and (max-width: 768px) {
+  .question-text {
+    font-size: 1.5em;
+  }
+}
+
+/* Mobile Phones */
+@media screen and (max-width: 480px) {
+  .question-text {
+    font-size: 1.2em;
+    margin-bottom: 15px;
+  }
+}

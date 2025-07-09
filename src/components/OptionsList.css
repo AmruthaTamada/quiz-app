@@ -1,0 +1,127 @@
+/* === Container for Option Buttons === */
+.options-list-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 20px;
+  margin-bottom: 25px;
+}
+
+/* === Base Option Button === */
+.option-button {
+  padding: 12px 18px;
+  font-size: 1rem;
+  font-family: inherit;
+  color: #333;
+  text-align: left;
+  line-height: 1.5;
+  width: 100%;
+
+  background-color: #ffffff;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+
+  cursor: pointer;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+
+  transition: background-color 0.3s ease,
+              border-color 0.3s ease,
+              transform 0.1s ease,
+              box-shadow 0.2s ease;
+}
+
+/* === Hover === */
+.option-button:not(:disabled):hover {
+  background-color: #f3f4f6;
+  border-color: #adb5bd;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.07);
+}
+
+/* === Active (Click Press) === */
+.option-button:not(:disabled):active {
+  background-color: #e5e7eb;
+  transform: scale(0.99);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+/* === Focus === */
+.option-button:focus {
+  outline: 2px solid #007bff;
+  outline-offset: 2px;
+}
+
+/* === Selected === */
+.option-button.selected {
+  background-color: #e0e7ff;
+  border-color: #a5b4fc;
+  color: #3730a3;
+  font-weight: 600;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+}
+
+/* === Disabled === */
+.option-button:disabled {
+  background-color: #f9fafb;
+  border-color: #e5e7eb;
+  color: #9ca3af;
+  cursor: not-allowed;
+  opacity: 0.7;
+  box-shadow: none;
+}
+
+/* === Selected + Disabled === */
+.option-button.selected:disabled {
+  background-color: #e0e7ff;
+  border-color: #a5b4fc;
+  color: #3730a3;
+  font-weight: 600;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  opacity: 0.7;
+}
+
+/* === Correct / Incorrect (Feedback Styles) === */
+.option-button.correct {
+  background-color: #28a745;
+  border-color: #1e7e34;
+  color: #fff;
+  cursor: default;
+}
+
+.option-button.incorrect {
+  background-color: #dc3545;
+  border-color: #bd2130;
+  color: #fff;
+  cursor: default;
+}
+
+/* === Feedback + Disabled === */
+.option-button.correct:disabled,
+.option-button.incorrect:disabled {
+  opacity: 1;
+  cursor: default;
+}
+
+/* === Fallback Message === */
+.no-options-message {
+  color: #6b7280;
+  font-style: italic;
+  padding: 15px 0;
+}
+
+/* === Responsive Design === */
+@media screen and (max-width: 576px) {
+  .options-container {
+    flex-direction: column;
+  }
+
+  .option-button {
+    width: 100%;
+    margin-bottom: 10px;
+    font-size: 1em;
+    padding: 12px;
+  }
+
+  .option-button:last-child {
+    margin-bottom: 0;
+  }
+}

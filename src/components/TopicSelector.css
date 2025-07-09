@@ -1,0 +1,55 @@
+/* src/components/TopicSelector.css */
+
+.topic-selector-container {
+  margin-bottom: 20px;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  text-align: center; /* Center align the heading */
+}
+
+.topic-selector-container h3 {
+  margin-top: 0;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.topic-buttons {
+  display: flex; /* Arrange buttons in a row */
+  flex-wrap: wrap; /* Allow buttons to wrap to the next line if space is insufficient */
+  justify-content: center; /* Center buttons horizontally */
+  gap: 10px; /* Space between buttons */
+}
+
+.topic-button {
+  padding: 8px 15px;
+  font-size: 1rem;
+  color: #fff;
+  background-color: #007bff; /* A primary blue color */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.topic-button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+.topic-button.active {
+  background-color: #28a745; /* A green color for the active topic */
+  font-weight: bold;
+  box-shadow: 0 0 5px rgba(40, 167, 69, 0.7);
+}
+
+.topic-selector-message {
+  padding: 10px;
+  text-align: center;
+  font-style: italic;
+}
+
+.topic-selector-error {
+  color: red;
+  font-weight: bold;
+}
