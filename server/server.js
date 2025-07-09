@@ -15,7 +15,7 @@ const PORT = process.env.PORT || 5000;
 
 // --- CORS Configuration ---
 const corsOptions = {
-  origin: ['http://localhost:3000', 'https://interact-quiz-app.netlify.app'],
+  origin: ['http://localhost:3000',  'https://interact-quiz-app.netlify.app'],
   optionsSuccessStatus: 200
 };
 app.use(cors(corsOptions));
