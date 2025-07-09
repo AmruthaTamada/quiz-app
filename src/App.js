@@ -27,12 +27,12 @@ function App() {
       setError(null);
 
       const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'http://localhost:5000';
-      // const apiUrl = selectedTopic
-      //   ? `${baseApiUrl}?topic=${encodeURIComponent(selectedTopic)}`
-      //   : baseApiUrl;
+      const apiUrl = selectedTopic
+        ? `${API_BASE_URL}/api/questions?topic=${encodeURIComponent(selectedTopic)}`
+        : `${API_BASE_URL}/api/questions`;
 
       try {
-        const response = await fetch(`${API_BASE_URL}/api/questions`); 
+        const response = await fetch(apiUrl);
 
         if (!response.ok) {
           let serverMessage = '';
@@ -119,39 +119,37 @@ function App() {
 
   // ----------------------- UI Rendering -----------------------
 
-  // src/App.js - inside the App component's return method
-  // ...
   if (loading) {
     return (
       <div className="app-status-container">
         <p className="loading-message">Loading quiz questions...</p>
-        {/* Example: <Spinner size="large" /> */}
       </div>
     );
   }
-  // ...
 
   if (error) {
     return (
-      <div className="pp-status-container">
+      <div className="app-status-container">
         <h1>Quiz App</h1>
         <p className="error-message">
           <strong>Error:</strong> {error}
           <br />
           (Ensure the backend server is running and the `quizData.json` is accessible.)
         </p>
+        <button onClick={() => window.location.reload()}>Try Again</button>
       </div>
     );
   }
 
   if (!quizData || quizData.length === 0) {
     return (
-      <div className="pp-status-container">
+      <div className="app-status-container">
         <h1>Quiz App</h1>
         <p className="info-message">
           No quiz questions available for {selectedTopic ? `"${selectedTopic}"` : 'the selected criteria'}.
           Please try another topic or check back later.
         </p>
+        <button onClick={handleRestartQuiz}>Select Different Topic</button>
       </div>
     );
   }
@@ -186,7 +184,7 @@ function App() {
               <OptionsList
                 options={currentQuestionData.options}
                 onOptionClick={handleAnswerOptionClick}
-                userSelection={userSelection}
+                userSelectedOption={userSelection}
                 correctAnswer={currentQuestionData.correctAnswer}
                 isAttempted={!!userSelection}
               />
