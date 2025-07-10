@@ -1,5 +1,3 @@
-// src/App.js
-
 import React, { useState, useEffect } from 'react';
 import './App.css';
 
@@ -20,7 +18,6 @@ function App() {
   const [userSelection, setUserSelection] = useState(null);
   const [selectedTopic, setSelectedTopic] = useState(null);
 
-  // ----------------------- Fetching Quiz Data -----------------------
   useEffect(() => {
     const fetchQuizData = async () => {
       setLoading(true);
@@ -76,7 +73,11 @@ function App() {
     fetchQuizData();
   }, [selectedTopic]);
 
-  // ----------------------- Quiz Logic -----------------------
+  // ✅ Log number of questions fetched
+  useEffect(() => {
+    console.log("📦 Total questions fetched:", quizData.length);
+  }, [quizData]);
+
   const totalQuestions = quizData.length;
   const currentQuestionData = (totalQuestions > 0 && currentQuestionIndex < totalQuestions)
     ? quizData[currentQuestionIndex]
@@ -117,8 +118,6 @@ function App() {
     setSelectedTopic(null);
   };
 
-  // ----------------------- UI Rendering -----------------------
-
   if (loading) {
     return (
       <div className="app-status-container">
@@ -155,7 +154,7 @@ function App() {
   }
 
   return (
-    <div className="app">
+    <div className="app fade-in">
       <h1>Interactive Quiz App</h1>
 
       {!showResults && (

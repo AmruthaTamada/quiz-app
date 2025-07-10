@@ -1,49 +1,22 @@
-/* src/index.css (or at the top of src/App.css if index.css is not your primary global file) */
+/* src/index.css */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap');
 
-/* Apply a basic reset and set a default font family */
-:root {
-  /* Color Palette */
-  --primary-color: #007bff;
-  --secondary-color: #6c757d;
-  --success-color: #28a745;
-  --error-color: #dc3545;
-  --text-color-dark: #212529;
-  --text-color-light: #f8f9fa;
-  --background-main: #ffffff;
-  --background-card: #f9f9f9;
-  --border-color: #ced4da;
-
-  /* Typography */
-  --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  --font-size-base: 1rem; /* Typically 16px */
-  --font-size-lg: calc(var(--font-size-base) * 1.25);
-  --font-size-sm: calc(var(--font-size-base) * 0.875);
-  --line-height-base: 1.5;
-
-  /* Spacing */
-  --spacing-unit: 8px;
-  --spacing-xs: calc(var(--spacing-unit) * 0.5);  /* 4px */
-  --spacing-sm: var(--spacing-unit);             /* 8px */
-  --spacing-md: calc(var(--spacing-unit) * 2);   /* 16px */
-  --spacing-lg: calc(var(--spacing-unit) * 3);   /* 24px */
-  --spacing-xl: calc(var(--spacing-unit) * 4);   /* 32px */
-
-  /* Borders */
-  --border-radius-base: 0.25rem; /* 4px */
-  --border-radius-lg: 0.5rem;  /* 8px */
-}
-body {
-  margin: 0; /* Remove default browser margins */
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif; /* Common system font stack for broad compatibility */
-  -webkit-font-smoothing: antialiased; /* Improve font rendering on WebKit browsers */
-  -moz-osx-font-smoothing: grayscale; /* Improve font rendering on Firefox */
-  background-color: #f0f2f5; /* A light, neutral background for the entire page */
-  color: #333; /* Default text color for good readability */
-}
-
-/* A common global reset for box-sizing, helps in layout predictability */
+/* === Reset & Smooth Rendering === */
 * {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  font-family: 'Outfit', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }

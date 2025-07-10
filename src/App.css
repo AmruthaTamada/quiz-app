@@ -1,213 +1,138 @@
-/* === App Container === */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap');
+
+/* === Blue Tones Theme === */
 :root {
-  /* Color Palette */
-  --primary-color: #007bff;
-  --secondary-color: #6c757d;
-  --success-color: #28a745;
-  --error-color: #dc3545;
-  --text-color-dark: #212529;
-  --text-color-light: #f8f9fa;
-  --background-main: #ffffff;
-  --background-card: #f9f9f9;
-  --border-color: #ced4da;
+  --blue-0: #001f3f;  /* Deep Navy */
+  --blue-1: #003366;  /* Midnight Blue */
+  --blue-2: #005792;  /* Royal Blue */
+  --blue-3: #548CA8;  /* Steel Blue */
+  --blue-4: #9DBED4;  /* Powder Blue */
 
-  /* Typography */
-  --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  --font-size-base: 1rem; /* Typically 16px */
-  --font-size-lg: calc(var(--font-size-base) * 1.25);
-  --font-size-sm: calc(var(--font-size-base) * 0.875);
-  --line-height-base: 1.5;
-
-  /* Spacing */
-  --spacing-unit: 8px;
-  --spacing-xs: calc(var(--spacing-unit) * 0.5);  /* 4px */
-  --spacing-sm: var(--spacing-unit);             /* 8px */
-  --spacing-md: calc(var(--spacing-unit) * 2);   /* 16px */
-  --spacing-lg: calc(var(--spacing-unit) * 3);   /* 24px */
-  --spacing-xl: calc(var(--spacing-unit) * 4);   /* 32px */
-
-  /* Borders */
-  --border-radius-base: 0.25rem; /* 4px */
-  --border-radius-lg: 0.5rem;  /* 8px */
+  --text-light: #ffffff;
+  --text-muted: #b0c4de;
+  --bg-light: #83909a;
+  --radius-lg: 16px;
+  --shadow-glow: 0 4px 20px rgba(0, 31, 63, 0.3);
 }
 
-.app-container {
-  max-width: 700px;
-  min-width: 300px;
+body {
+  margin: 0;
+  font-family: 'Outfit', sans-serif;
+  background: var(--bg-light);
+  color: var(--blue-1);
+}
+
+/* === App Container (Dark Card) === */
+.app {
+  max-width: 720px;
   margin: 40px auto;
-  padding: 25px;
-  background-color: #ffffff;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  border-radius: var(--radius-lg);
+  background: var(--blue-1);
+  box-shadow: var(--shadow-glow);
+  backdrop-filter: blur(12px);
   text-align: center;
 }
 
-/* === Main Title === */
-.app-container h1 {
-  color: #2c3e50;
-  margin: 0 0 25px 0;
-  font-size: 2.2rem;
+/* === Heading === */
+.app h1 {
+  font-size: 2.6rem;
+  font-weight: 700;
+  color: var(--blue-4);
+  margin-bottom: 30px;
+  animation: fadeInDown 0.6s ease-out;
+}
+
+/* === Question Text === */
+.quiz-interface .quiz-content-area p {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--text-light); /* bright white for contrast */
 }
 
 /* === Quiz Interface === */
 .quiz-interface {
   display: flex;
   flex-direction: column;
-  align-items: stretch;
   gap: 20px;
-  width: 100%;
+  animation: fadeInUp 0.8s ease-in;
 }
 
-/* === Action Buttons (Reusable) === */
+/* === Buttons === */
 .action-button {
-  padding: 12px 25px;
-  font-size: 1.1rem;
-  font-weight: 600;
-  font-family: inherit;
-  color: #ffffff;
-  background-color: #007bff;
+  background: var(--blue-2);
+  color: var(--text-light);
   border: none;
-  border-radius: 8px;
+  border-radius: var(--radius-lg);
+  padding: 12px 25px;
+  font-size: 1rem;
+  font-weight: 600;
   cursor: pointer;
-  display: inline-block;
-  text-align: center;
-  text-decoration: none;
-  transition: background-color 0.2s ease-in-out, transform 0.1s ease-in-out, box-shadow 0.2s ease;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: 0.3s ease;
+  box-shadow: 0 0 10px var(--blue-2);
 }
 
 .action-button:hover {
-  background-color: #0056b3;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-}
-
-.action-button:active {
-  background-color: #004085;
-  transform: translateY(1px);
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
-}
-
-.action-button:focus {
-  outline: none;
-  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5), 0 2px 5px rgba(0, 0, 0, 0.2);
+  background: var(--blue-3);
+  color: #001f3f;
+  transform: scale(1.05);
 }
 
 .action-button:disabled {
-  background-color: #cccccc;
-  color: #666666;
+  opacity: 0.5;
   cursor: not-allowed;
-  opacity: 0.7;
-  box-shadow: none;
-  transform: none;
 }
 
 .next-question-button {
   margin-top: 10px;
 }
 
-/* === Message Boxes === */
+/* === Messages === */
 .loading-message,
 .error-message,
 .info-message {
-  text-align: center;
+  background: var(--blue-0);
   padding: 20px;
-  font-size: 1.2rem;
-  margin-top: 30px;
+  border-radius: var(--radius-lg);
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  border: 1px solid var(--blue-3);
 }
 
-.loading-message {
-  color: #555;
+/* === Animations === */
+@keyframes fadeInUp {
+  0% { opacity: 0; transform: translateY(25px); }
+  100% { opacity: 1; transform: translateY(0); }
 }
 
-.error-message {
-  color: #d9534f;
-  background-color: #f2dede;
-  border: 1px solid #ebccd1;
-  border-radius: 4px;
+@keyframes fadeInDown {
+  0% { opacity: 0; transform: translateY(-25px); }
+  100% { opacity: 1; transform: translateY(0); }
 }
 
-.info-message {
-  color: #31708f;
-  background-color: #d9edf7;
-  border: 1px solid #bce8f1;
-  border-radius: 4px;
-}
-
-/* === Responsive Design === */
-
-/* Tablets */
-@media screen and (max-width: 768px) {
-  .quiz-container {
-    max-width: 95%;
-    padding: 15px;
-    margin-top: 10px;
-  }
-}
-
-/* Mobile Phones */
-@media screen and (max-width: 480px) {
-  .quiz-container {
-    padding: 10px;
-    margin: 0;
-    border-radius: 0;
-  }
-}
-
-
-.results-screen-transition-enter {
-  opacity: 0;
-  transform: translateY(20px);
-}
-.results-screen-transition-enter-active {
-  opacity: 1;
-  transform: translateY(0);
-  transition: opacity 300ms, transform 300ms;
-}
-.results-screen-transition-exit {
-  opacity: 1;
-  transform: translateY(0);
-}
-.results-screen-transition-exit-active {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 300ms, transform 300ms;
-}
-/* Add to App.css or your global stylesheet */
-.app-status-container {
-  display: flex;
-  flex-direction: column; /* To stack message and potential spinner */
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh; /* Take up full viewport height */
-  text-align: center;
-  padding: 20px;
-  background-color: var(--background-main, #fff); /* Use CSS variable if defined */
-}
-
-.loading-message,
-.error-message, /* From previous task */
-.info-message { /* For "No questions available" */
-  font-size: var(--font-size-lg, 1.25rem); /* Use CSS variable */
-  color: var(--text-color-dark, #333);
-  margin-bottom: 20px; /* Space for a spinner or retry button */
-}
-
-/* Optional: Basic Spinner (CSS only) */
-/* You can replace this with an SVG, an image, or a library component */
+/* === Spinner === */
 .spinner {
-  border: 4px solid rgba(0, 0, 0, 0.1);
   width: 36px;
   height: 36px;
+  border: 4px solid rgba(255, 255, 255, 0.2);
+  border-top: 4px solid var(--blue-4);
   border-radius: 50%;
-  border-left-color: var(--primary-color, #007bff); /* Use CSS variable */
-  animation: spin 1s ease infinite;
+  animation: spin 1s linear infinite;
+  margin: 20px auto;
 }
 
 @keyframes spin {
-  0% {
-    transform: rotate(0deg);
+  to { transform: rotate(360deg); }
+}
+
+/* === Responsive === */
+@media (max-width: 600px) {
+  .app {
+    margin: 10px;
+    padding: 15px;
   }
-  100% {
-    transform: rotate(360deg);
+
+  .app h1 {
+    font-size: 2rem;
   }
 }
