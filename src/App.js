@@ -155,7 +155,7 @@ function App() {
 
   return (
     <div className="app fade-in">
-      <h1>Interactive Quiz App</h1>
+      <h1>Quizzzy</h1>
 
       {!showResults && (
         <TopicSelector
